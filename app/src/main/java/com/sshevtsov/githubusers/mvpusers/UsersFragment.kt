@@ -60,8 +60,8 @@ class UsersFragment :
         fun newInstance(): UsersFragment = UsersFragment()
     }
 
-    override fun onUserClicked(login: String) {
-        //TODO("Not yet implemented")
+    override fun onUserClicked(userLogin: String) {
+        presenter.onUserClicked(userLogin)
     }
 
 }

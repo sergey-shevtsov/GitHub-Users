@@ -20,6 +20,6 @@ class UsersAdapter(
 
 
     fun interface OnUserClickListener {
-        fun onUserClicked(login: String)
+        fun onUserClicked(userLogin: String)
     }
 }
