@@ -1,6 +1,7 @@
 package com.sshevtsov.githubusers.mvpusers
 
 import com.github.terrakok.cicerone.Router
+import com.sshevtsov.githubusers.ViewState
 import com.sshevtsov.githubusers.data.remote.GitHubUserRepository
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import moxy.MvpPresenter
@@ -11,6 +12,7 @@ class UsersPresenter(
 ) : MvpPresenter<UsersView>() {
 
     override fun onFirstViewAttach() {
+        viewState.setState(ViewState.LOADING)
         updateContent()
     }
 
@@ -19,6 +21,7 @@ class UsersPresenter(
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
                 viewState.showUsers(it)
+                viewState.setState(ViewState.IDLE)
             }, {
                 //todo
             })

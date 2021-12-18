@@ -2,7 +2,9 @@ package com.sshevtsov.githubusers.mvpusers
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.view.isVisible
 import com.sshevtsov.githubusers.R
+import com.sshevtsov.githubusers.ViewState
 import com.sshevtsov.githubusers.app
 import com.sshevtsov.githubusers.data.entities.GitHubUserEntity
 import com.sshevtsov.githubusers.data.remote.GitHubUserRepositoryFactory
@@ -31,6 +33,13 @@ class UsersFragment :
         _binding = FragmentUsersBinding.bind(view)
 
         binding.usersRecyclerView.adapter = usersAdapter
+    }
+
+    override fun setState(viewState: ViewState) {
+        when (viewState) {
+            ViewState.LOADING -> binding.progressIndicator.isVisible = true
+            ViewState.IDLE -> binding.progressIndicator.isVisible = false
+        }
     }
 
     override fun showUsers(users: List<GitHubUserEntity>) {
