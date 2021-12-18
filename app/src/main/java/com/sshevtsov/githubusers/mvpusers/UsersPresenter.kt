@@ -12,6 +12,10 @@ class UsersPresenter(
 ) : MvpPresenter<UsersView>() {
 
     override fun onFirstViewAttach() {
+        onRefresh()
+    }
+
+    fun onRefresh() {
         viewState.setState(ViewState.LOADING)
         updateContent()
     }

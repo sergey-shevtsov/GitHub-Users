@@ -33,6 +33,11 @@ class UsersFragment :
         _binding = FragmentUsersBinding.bind(view)
 
         binding.usersRecyclerView.adapter = usersAdapter
+
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            binding.swipeRefreshLayout.isRefreshing = false
+            presenter.onRefresh()
+        }
     }
 
     override fun setState(viewState: ViewState) {
