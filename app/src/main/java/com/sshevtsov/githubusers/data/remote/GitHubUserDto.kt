@@ -1,4 +1,4 @@
-package com.sshevtsov.githubusers.data
+package com.sshevtsov.githubusers.data.remote
 
 import com.google.gson.annotations.SerializedName
 

@@ -1,7 +1,7 @@
 package com.sshevtsov.githubusers.data.retrofit
 
-import com.sshevtsov.githubusers.data.GitHubRepoDto
-import com.sshevtsov.githubusers.data.GitHubUserDto
+import com.sshevtsov.githubusers.data.remote.GitHubRepoDto
+import com.sshevtsov.githubusers.data.remote.GitHubUserDto
 import io.reactivex.rxjava3.core.Single
 import retrofit2.http.GET
 import retrofit2.http.Path
