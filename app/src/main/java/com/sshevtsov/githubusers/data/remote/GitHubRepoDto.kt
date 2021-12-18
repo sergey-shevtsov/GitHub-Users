@@ -11,6 +11,8 @@ data class GitHubRepoDto(
     val htmlUrl: String? = null,
     @SerializedName("language")
     val language: String? = null,
+    @SerializedName("forks_count")
+    val forksCount: String? = null,
     @SerializedName("stargazers_count")
-    val stargazersCount: String? = null,
+    val stargazersCount: String? = null
 )

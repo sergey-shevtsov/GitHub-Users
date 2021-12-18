@@ -24,6 +24,7 @@ object GitHubDtoMapper {
                 name = name,
                 htmlUrl = htmlUrl,
                 language = language,
+                forksCount = forksCount,
                 stargazersCount = stargazersCount
             )
         }

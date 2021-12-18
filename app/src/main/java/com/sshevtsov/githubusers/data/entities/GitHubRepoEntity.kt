@@ -5,5 +5,6 @@ data class GitHubRepoEntity(
     val name: String? = null,
     val htmlUrl: String? = null,
     val language: String? = null,
-    val stargazersCount: String? = null,
+    val forksCount: String? = null,
+    val stargazersCount: String? = null
 )
