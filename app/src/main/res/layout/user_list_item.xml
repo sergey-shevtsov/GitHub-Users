@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/users_list_item_margin"
+    app:cardCornerRadius="@dimen/users_list_item_corner_radius">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/users_list_item_padding">
+
+        <FrameLayout
+            android:id="@+id/avatar_frame_layout"
+            android:layout_width="@dimen/users_list_item_avatar_width"
+            android:layout_height="@dimen/users_list_item_avatar_height"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/avatar_image_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:adjustViewBounds="true"
+                android:scaleType="centerInside"
+                app:shapeAppearanceOverlay="@style/AvatarImageView" />
+
+            <com.google.android.material.progressindicator.CircularProgressIndicator
+                android:id="@+id/avatar_progress_indicator"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:indeterminate="true"
+                android:visibility="gone"
+                tools:visibility="visible" />
+
+        </FrameLayout>
+
+
+        <TextView
+            android:id="@+id/login_text_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/users_list_item_login_margin_start"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/avatar_frame_layout"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="mojombo" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/open_in_browser_image_button"
+            android:layout_width="@dimen/users_list_item_image_button_width"
+            android:layout_height="@dimen/users_list_item_image_button_height"
+            android:layout_marginEnd="@dimen/users_list_item_image_button_margin_end"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_open_in_browser" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>
