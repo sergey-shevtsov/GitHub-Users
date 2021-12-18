@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        if (savedInstanceState == null) app.router.navigateTo(UsersScreen)
+        if (savedInstanceState == null) app.router.replaceScreen(UsersScreen)
     }
 
     override fun onResumeFragments() {
