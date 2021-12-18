@@ -1,6 +1,6 @@
 package com.sshevtsov.githubusers.data.entities
 
-data class GitHubRepo(
+data class GitHubRepoEntity(
     val id: String? = null,
     val name: String? = null,
     val htmlUrl: String? = null,

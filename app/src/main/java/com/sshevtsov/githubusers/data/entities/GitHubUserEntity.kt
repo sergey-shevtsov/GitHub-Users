@@ -1,6 +1,6 @@
 package com.sshevtsov.githubusers.data.entities
 
-data class GitHubUser(
+data class GitHubUserEntity(
     val id: String? = null,
     val login: String? = null,
     val avatarUrl: String? = null,
