@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">GitHub Users</string>
+    <string name="repositories_title">Repositories:</string>
+    <string name="language_stats_title">Language</string>
+    <string name="forks_stats_title">Forks</string>
+    <string name="stars_stats_title">Stars</string>
+    <string name="repository_stats_pattern">%s: %s</string>
 </resources>

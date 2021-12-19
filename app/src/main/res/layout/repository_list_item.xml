@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    android:layout_marginBottom="8dp"
+    app:cardElevation="8dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="8dp">
+
+        <TextView
+            android:id="@+id/repository_name_text_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+            app:layout_constraintBottom_toBottomOf="@id/top_barrier"
+            app:layout_constraintEnd_toStartOf="@id/open_in_browser_image_button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="30daysoflaptops.github.io" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/open_in_browser_image_button"
+            android:layout_width="@dimen/users_list_item_image_button_width"
+            android:layout_height="@dimen/users_list_item_image_button_height"
+            android:layout_marginEnd="@dimen/users_list_item_image_button_margin_end"
+            app:layout_constraintBottom_toBottomOf="@id/top_barrier"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_open_in_browser" />
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/top_barrier"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:barrierDirection="bottom"
+            app:constraint_referenced_ids="repository_name_text_view,open_in_browser_image_button" />
+
+        <TextView
+            android:id="@+id/language_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/top_barrier"
+            tools:text="Language: CSS" />
+
+        <TextView
+            android:id="@+id/forks_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="24dp"
+            app:layout_constraintBaseline_toBaselineOf="@id/language_text_view"
+            app:layout_constraintEnd_toStartOf="@id/stars_text_view"
+            tools:text="Forks: 2" />
+
+        <TextView
+            android:id="@+id/stars_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintBaseline_toBaselineOf="@id/language_text_view"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="Stars: 7" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>
