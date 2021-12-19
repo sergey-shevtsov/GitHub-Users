@@ -4,20 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="8dp"
-    android:layout_marginBottom="8dp"
-    app:cardElevation="8dp">
+    android:layout_marginTop="@dimen/repository_list_item_margin_top"
+    android:layout_marginBottom="@dimen/repository_list_item_margin_bottom"
+    app:cardElevation="@dimen/repository_list_item_elevation">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="8dp">
+        android:padding="@dimen/repository_list_item_padding">
 
         <TextView
             android:id="@+id/repository_name_text_view"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="@dimen/repository_name_text_view_margin_start"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
             app:layout_constraintBottom_toBottomOf="@id/top_barrier"
             app:layout_constraintEnd_toStartOf="@id/open_in_browser_image_button"
@@ -46,8 +46,8 @@
             android:id="@+id/language_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginStart="@dimen/language_text_view_margin_start"
+            android:layout_marginTop="@dimen/language_text_view_margin_top"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/top_barrier"
             tools:text="Language: CSS" />
@@ -56,7 +56,7 @@
             android:id="@+id/forks_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="24dp"
+            android:layout_marginEnd="@dimen/forks_text_view_margin_end"
             app:layout_constraintBaseline_toBaselineOf="@id/language_text_view"
             app:layout_constraintEnd_toStartOf="@id/stars_text_view"
             tools:text="Forks: 2" />
@@ -65,7 +65,7 @@
             android:id="@+id/stars_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
+            android:layout_marginEnd="@dimen/stars_text_view_margin_end"
             app:layout_constraintBaseline_toBaselineOf="@id/language_text_view"
             app:layout_constraintEnd_toEndOf="parent"
             tools:text="Stars: 7" />
