@@ -1,10 +1,7 @@
 package com.sshevtsov.githubusers.mvpuser
 
-import android.animation.ValueAnimator
-import android.annotation.SuppressLint
 import android.graphics.drawable.Drawable
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.core.view.isVisible
 import com.bumptech.glide.Glide
