@@ -24,9 +24,9 @@ class UsersPresenter(
     private fun updateContent() {
         userRepository.getUsers()
             .observeOn(AndroidSchedulers.mainThread())
+            .doFinally { viewState.setState(ViewState.IDLE) }
             .subscribe({
                 viewState.showUsers(it)
-                viewState.setState(ViewState.IDLE)
             }, {
                 //todo
             })
