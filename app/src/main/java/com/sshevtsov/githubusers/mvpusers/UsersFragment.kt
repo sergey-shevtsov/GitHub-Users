@@ -42,8 +42,8 @@ class UsersFragment :
 
     override fun setState(viewState: ViewState) {
         when (viewState) {
-            ViewState.LOADING -> binding.progressIndicator.isVisible = true
-            ViewState.IDLE -> binding.progressIndicator.isVisible = false
+            ViewState.LOADING -> binding.progressIndicatorFrameLayout.isVisible = true
+            ViewState.IDLE -> binding.progressIndicatorFrameLayout.isVisible = false
         }
     }
 
