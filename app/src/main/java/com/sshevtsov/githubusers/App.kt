@@ -13,13 +13,15 @@ class App : Application() {
     val router get() = cicerone.router
     val navigatorHolder get() = cicerone.getNavigatorHolder()
 
-    private lateinit var database: DBStorage
-
     override fun onCreate() {
         super.onCreate()
 
         database =
             Room.databaseBuilder(this, DBStorage::class.java, "github.db").build()
+    }
+
+    companion object {
+        lateinit var database: DBStorage
     }
 
 }
