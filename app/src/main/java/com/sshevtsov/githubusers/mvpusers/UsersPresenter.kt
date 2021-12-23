@@ -6,11 +6,14 @@ import com.sshevtsov.githubusers.data.repository.GitHubUserRepository
 import com.sshevtsov.githubusers.mvpuser.UserScreen
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import moxy.MvpPresenter
+import javax.inject.Inject
 
 class UsersPresenter(
-    private val userRepository: GitHubUserRepository,
-    private val router: Router
+    private val userRepository: GitHubUserRepository
 ) : MvpPresenter<UsersView>() {
+
+    @Inject
+    lateinit var router: Router
 
     override fun onFirstViewAttach() {
         onRefresh()

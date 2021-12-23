@@ -22,10 +22,9 @@ class UsersFragment :
     private val usersAdapter = UsersAdapter(this)
 
     private val presenter by moxyPresenter {
-        UsersPresenter(
-            GitHubUserRepositoryFactory.create(),
-            app.router
-        )
+        UsersPresenter(GitHubUserRepositoryFactory.create()).apply {
+            app.component.inject(this)
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

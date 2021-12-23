@@ -4,18 +4,21 @@ import android.app.Application
 import android.content.Context
 import androidx.fragment.app.Fragment
 import androidx.room.Room
-import com.github.terrakok.cicerone.Cicerone
 import com.sshevtsov.githubusers.data.room.DBStorage
 import com.sshevtsov.githubusers.data.room.Migrations
+import com.sshevtsov.githubusers.di.ApplicationComponent
+import com.sshevtsov.githubusers.di.DaggerApplicationComponent
 
 class App : Application() {
 
-    private val cicerone = Cicerone.create()
-    val router get() = cicerone.router
-    val navigatorHolder get() = cicerone.getNavigatorHolder()
+    lateinit var component: ApplicationComponent
 
     override fun onCreate() {
         super.onCreate()
+
+        component = DaggerApplicationComponent.builder()
+            .setContext(this)
+            .build()
 
         database =
             Room.databaseBuilder(this, DBStorage::class.java, "github.db")
