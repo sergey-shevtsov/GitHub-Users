@@ -1,6 +1,7 @@
 package com.sshevtsov.githubusers.data.room
 
 import androidx.room.*
+import io.reactivex.rxjava3.core.Single
 
 @Dao
 interface GitHubUserDao {
@@ -33,8 +34,8 @@ interface GitHubUserDao {
     fun delete(repositories: List<RoomGitHubUser>)
 
     @Query("SELECT * FROM GitHubUserTable")
-    fun getAll(): List<RoomGitHubUser>
+    fun getAll(): Single<List<RoomGitHubUser>>
 
     @Query("SELECT * FROM GitHubUserTable WHERE login = :login LIMIT 1")
-    fun findByLogin(login: String): RoomGitHubUser?
+    fun findByLogin(login: String): Single<RoomGitHubUser>
 }

@@ -2,6 +2,7 @@ package com.sshevtsov.githubusers.data.room
 
 import androidx.room.*
 import androidx.room.OnConflictStrategy.REPLACE
+import io.reactivex.rxjava3.core.Single
 
 @Dao
 interface GitHubRepositoryDao {
@@ -34,9 +35,9 @@ interface GitHubRepositoryDao {
     fun delete(repositories: List<RoomGitHubRepository>)
 
     @Query("SELECT * FROM GitHubRepositoryTable")
-    fun getAll(): List<RoomGitHubRepository>
+    fun getAll(): Single<List<RoomGitHubRepository>>
 
     @Query("SELECT * FROM GitHubRepositoryTable WHERE userId = :userId")
-    fun findForUser(userId: String): List<RoomGitHubRepository>
+    fun findForUser(userId: String): Single<List<RoomGitHubRepository>>
 
 }
