@@ -6,7 +6,7 @@ import androidx.room.RoomDatabase
 @Database(
     exportSchema = true,
     entities = [RoomGitHubUser::class, RoomGitHubRepository::class],
-    version = 1
+    version = 2
 )
 abstract class DBStorage : RoomDatabase() {
 
