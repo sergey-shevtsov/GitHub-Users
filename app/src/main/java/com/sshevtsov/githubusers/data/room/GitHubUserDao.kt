@@ -7,31 +7,31 @@ import io.reactivex.rxjava3.core.Single
 interface GitHubUserDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(repository: RoomGitHubUser)
+    fun insert(user: RoomGitHubUser)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(vararg repositories: RoomGitHubUser)
+    fun insert(vararg users: RoomGitHubUser)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(repositories: List<RoomGitHubUser>)
+    fun insert(users: List<RoomGitHubUser>)
 
     @Update
-    fun update(repository: RoomGitHubUser)
+    fun update(user: RoomGitHubUser)
 
     @Update
-    fun update(vararg repositories: RoomGitHubUser)
+    fun update(vararg users: RoomGitHubUser)
 
     @Update
-    fun update(repositories: List<RoomGitHubUser>)
+    fun update(users: List<RoomGitHubUser>)
 
     @Delete
-    fun delete(repository: RoomGitHubUser)
+    fun delete(user: RoomGitHubUser)
 
     @Delete
-    fun delete(vararg repositories: RoomGitHubUser)
+    fun delete(vararg users: RoomGitHubUser)
 
     @Delete
-    fun delete(repositories: List<RoomGitHubUser>)
+    fun delete(users: List<RoomGitHubUser>)
 
     @Query("SELECT * FROM GitHubUserTable")
     fun getAll(): Single<List<RoomGitHubUser>>
