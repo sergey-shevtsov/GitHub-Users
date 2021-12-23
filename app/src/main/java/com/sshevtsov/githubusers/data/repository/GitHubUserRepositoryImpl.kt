@@ -4,11 +4,15 @@ import com.sshevtsov.githubusers.data.entities.GitHubRepositoryEntity
 import com.sshevtsov.githubusers.data.entities.GitHubUserEntity
 import com.sshevtsov.githubusers.data.retrofit.GitHubDtoMapper
 import com.sshevtsov.githubusers.data.retrofit.GitHubApi
+import com.sshevtsov.githubusers.data.room.GitHubRepositoryDao
+import com.sshevtsov.githubusers.data.room.GitHubUserDao
 import io.reactivex.rxjava3.core.Single
 import io.reactivex.rxjava3.schedulers.Schedulers
 
 class GitHubUserRepositoryImpl(
-    private val gitHubApi: GitHubApi
+    private val gitHubApi: GitHubApi,
+    private val roomUserDao: GitHubUserDao,
+    private val roomRepositoryDao: GitHubRepositoryDao
 ) : GitHubUserRepository {
 
     override fun getUsers(): Single<List<GitHubUserEntity>> {
