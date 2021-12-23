@@ -4,11 +4,12 @@ import com.sshevtsov.githubusers.ViewState
 import com.sshevtsov.githubusers.data.repository.GitHubUserRepository
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import moxy.MvpPresenter
+import javax.inject.Inject
 
-class UserPresenter(
-    private val userRepository: GitHubUserRepository,
-    private val userLogin: String
-) : MvpPresenter<UserView>() {
+class UserPresenter(private val userLogin: String) : MvpPresenter<UserView>() {
+
+    @Inject
+    lateinit var userRepository: GitHubUserRepository
 
     override fun onFirstViewAttach() {
         updateUserContent(userLogin)
@@ -23,7 +24,7 @@ class UserPresenter(
             .doFinally { viewState.setMainState(ViewState.IDLE) }
             .subscribe({
                 viewState.showUserContent(it)
-            },{
+            }, {
                 //todo
             })
     }
@@ -36,7 +37,7 @@ class UserPresenter(
             .doFinally { viewState.setRepoListState(ViewState.IDLE) }
             .subscribe({
                 viewState.showRepositories(it)
-            },{
+            }, {
                 //todo
             })
     }

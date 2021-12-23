@@ -19,15 +19,6 @@ class App : Application() {
         component = DaggerApplicationComponent.builder()
             .setContext(this)
             .build()
-
-        database =
-            Room.databaseBuilder(this, DBStorage::class.java, "github.db")
-                .addMigrations(Migrations.MIGRATION_1_2)
-                .build()
-    }
-
-    companion object {
-        lateinit var database: DBStorage
     }
 
 }

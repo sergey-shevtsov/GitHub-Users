@@ -8,12 +8,13 @@ import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import moxy.MvpPresenter
 import javax.inject.Inject
 
-class UsersPresenter(
-    private val userRepository: GitHubUserRepository
-) : MvpPresenter<UsersView>() {
+class UsersPresenter : MvpPresenter<UsersView>() {
 
     @Inject
     lateinit var router: Router
+
+    @Inject
+    lateinit var userRepository: GitHubUserRepository
 
     override fun onFirstViewAttach() {
         onRefresh()

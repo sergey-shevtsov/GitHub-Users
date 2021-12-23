@@ -11,9 +11,9 @@ import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 import com.sshevtsov.githubusers.R
 import com.sshevtsov.githubusers.ViewState
+import com.sshevtsov.githubusers.app
 import com.sshevtsov.githubusers.data.entities.GitHubRepositoryEntity
 import com.sshevtsov.githubusers.data.entities.GitHubUserEntity
-import com.sshevtsov.githubusers.data.repository.GitHubUserRepositoryFactory
 import com.sshevtsov.githubusers.databinding.FragmentUserBinding
 import com.sshevtsov.githubusers.mvpuser.recycler.RepositoriesAdapter
 import moxy.MvpAppCompatFragment
@@ -27,7 +27,9 @@ class UserFragment : MvpAppCompatFragment(R.layout.fragment_user), UserView {
     private val repositoriesAdapter = RepositoriesAdapter()
 
     private val presenter by moxyPresenter {
-        UserPresenter(GitHubUserRepositoryFactory.create(), userLogin)
+        UserPresenter(userLogin).apply {
+            app.component.inject(this)
+        }
     }
 
     private val userLogin by lazy {

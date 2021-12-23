@@ -9,8 +9,10 @@ import com.sshevtsov.githubusers.data.room.GitHubUserDao
 import com.sshevtsov.githubusers.data.room.RoomGitHubMapper
 import io.reactivex.rxjava3.core.Single
 import io.reactivex.rxjava3.schedulers.Schedulers
+import javax.inject.Inject
 
-class GitHubUserRepositoryImpl(
+class GitHubUserRepositoryImpl
+@Inject constructor(
     private val gitHubApi: GitHubApi,
     private val roomUserDao: GitHubUserDao,
     private val roomRepositoryDao: GitHubRepositoryDao

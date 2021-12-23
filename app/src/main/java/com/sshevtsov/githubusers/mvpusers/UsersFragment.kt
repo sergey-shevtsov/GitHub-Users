@@ -7,7 +7,6 @@ import com.sshevtsov.githubusers.R
 import com.sshevtsov.githubusers.ViewState
 import com.sshevtsov.githubusers.app
 import com.sshevtsov.githubusers.data.entities.GitHubUserEntity
-import com.sshevtsov.githubusers.data.repository.GitHubUserRepositoryFactory
 import com.sshevtsov.githubusers.databinding.FragmentUsersBinding
 import com.sshevtsov.githubusers.mvpusers.recycler.UsersAdapter
 import moxy.MvpAppCompatFragment
@@ -22,7 +21,7 @@ class UsersFragment :
     private val usersAdapter = UsersAdapter(this)
 
     private val presenter by moxyPresenter {
-        UsersPresenter(GitHubUserRepositoryFactory.create()).apply {
+        UsersPresenter().apply {
             app.component.inject(this)
         }
     }
