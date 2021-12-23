@@ -17,6 +17,10 @@ object GitHubDtoMapper {
         }
     }
 
+    fun mapUserDtoToEntity(userDtoList: List<GitHubUserDto>): List<GitHubUserEntity> {
+        return userDtoList.map { mapUserDtoToEntity(it) }
+    }
+
     fun mapRepoDtoToEntity(repositoryDto: GitHubRepositoryDto): GitHubRepositoryEntity {
         with(repositoryDto) {
             return GitHubRepositoryEntity(
@@ -30,11 +34,7 @@ object GitHubDtoMapper {
         }
     }
 
-    fun mapUserDtoListToEntityList(userDtoList: List<GitHubUserDto>): List<GitHubUserEntity> {
-        return userDtoList.map { mapUserDtoToEntity(it) }
-    }
-
-    fun mapRepoDtoListToEntityList(repositoryDtoList: List<GitHubRepositoryDto>): List<GitHubRepositoryEntity> {
+    fun mapRepoDtoToEntity(repositoryDtoList: List<GitHubRepositoryDto>): List<GitHubRepositoryEntity> {
         return repositoryDtoList.map { mapRepoDtoToEntity(it) }
     }
 
