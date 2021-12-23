@@ -3,10 +3,10 @@ package com.sshevtsov.githubusers.mvpuser.recycler
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
-import com.sshevtsov.githubusers.data.entities.GitHubRepoEntity
+import com.sshevtsov.githubusers.data.entities.GitHubRepositoryEntity
 import com.sshevtsov.githubusers.databinding.RepositoryListItemBinding
 
-class RepositoriesAdapter : ListAdapter<GitHubRepoEntity, RepositoryViewHolder>(RepositoryDiff()) {
+class RepositoriesAdapter : ListAdapter<GitHubRepositoryEntity, RepositoryViewHolder>(RepositoryDiff()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RepositoryViewHolder =
         RepositoryViewHolder(

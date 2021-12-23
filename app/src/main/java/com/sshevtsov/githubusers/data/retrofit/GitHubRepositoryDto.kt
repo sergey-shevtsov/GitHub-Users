@@ -1,8 +1,8 @@
-package com.sshevtsov.githubusers.data.remote
+package com.sshevtsov.githubusers.data.retrofit
 
 import com.google.gson.annotations.SerializedName
 
-data class GitHubRepoDto(
+data class GitHubRepositoryDto(
     @SerializedName("id")
     val id: String? = null,
     @SerializedName("name")

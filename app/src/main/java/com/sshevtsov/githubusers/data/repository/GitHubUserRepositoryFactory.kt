@@ -1,4 +1,4 @@
-package com.sshevtsov.githubusers.data.remote
+package com.sshevtsov.githubusers.data.repository
 
 import com.sshevtsov.githubusers.data.retrofit.GitHubApiFactory
 

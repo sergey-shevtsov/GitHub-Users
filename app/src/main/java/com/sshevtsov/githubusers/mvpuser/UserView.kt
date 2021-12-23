@@ -1,7 +1,7 @@
 package com.sshevtsov.githubusers.mvpuser
 
 import com.sshevtsov.githubusers.ViewState
-import com.sshevtsov.githubusers.data.entities.GitHubRepoEntity
+import com.sshevtsov.githubusers.data.entities.GitHubRepositoryEntity
 import com.sshevtsov.githubusers.data.entities.GitHubUserEntity
 import moxy.MvpView
 import moxy.viewstate.strategy.alias.SingleState
@@ -19,5 +19,5 @@ interface UserView : MvpView {
     fun showUserContent(userEntity: GitHubUserEntity)
 
     @SingleState
-    fun showRepositories(repositories: List<GitHubRepoEntity>)
+    fun showRepositories(repositories: List<GitHubRepositoryEntity>)
 }

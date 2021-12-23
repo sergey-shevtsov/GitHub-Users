@@ -11,9 +11,9 @@ import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 import com.sshevtsov.githubusers.R
 import com.sshevtsov.githubusers.ViewState
-import com.sshevtsov.githubusers.data.entities.GitHubRepoEntity
+import com.sshevtsov.githubusers.data.entities.GitHubRepositoryEntity
 import com.sshevtsov.githubusers.data.entities.GitHubUserEntity
-import com.sshevtsov.githubusers.data.remote.GitHubUserRepositoryFactory
+import com.sshevtsov.githubusers.data.repository.GitHubUserRepositoryFactory
 import com.sshevtsov.githubusers.databinding.FragmentUserBinding
 import com.sshevtsov.githubusers.mvpuser.recycler.RepositoriesAdapter
 import moxy.MvpAppCompatFragment
@@ -87,7 +87,7 @@ class UserFragment : MvpAppCompatFragment(R.layout.fragment_user), UserView {
             .into(binding.avatarImageView)
     }
 
-    override fun showRepositories(repositories: List<GitHubRepoEntity>) {
+    override fun showRepositories(repositories: List<GitHubRepositoryEntity>) {
         repositoriesAdapter.submitList(repositories)
     }
 

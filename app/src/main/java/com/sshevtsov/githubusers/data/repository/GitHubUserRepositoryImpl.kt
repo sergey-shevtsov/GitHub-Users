@@ -1,7 +1,8 @@
-package com.sshevtsov.githubusers.data.remote
+package com.sshevtsov.githubusers.data.repository
 
-import com.sshevtsov.githubusers.data.entities.GitHubRepoEntity
+import com.sshevtsov.githubusers.data.entities.GitHubRepositoryEntity
 import com.sshevtsov.githubusers.data.entities.GitHubUserEntity
+import com.sshevtsov.githubusers.data.retrofit.GitHubDtoMapper
 import com.sshevtsov.githubusers.data.retrofit.GitHubApi
 import io.reactivex.rxjava3.core.Single
 import io.reactivex.rxjava3.schedulers.Schedulers
@@ -22,7 +23,7 @@ class GitHubUserRepositoryImpl(
             .subscribeOn(Schedulers.io())
     }
 
-    override fun getUserRepositories(login: String): Single<List<GitHubRepoEntity>> {
+    override fun getUserRepositories(login: String): Single<List<GitHubRepositoryEntity>> {
         return gitHubApi.getUserRepositories(login)
             .map { GitHubDtoMapper.mapRepoDtoListToEntityList(it) }
             .subscribeOn(Schedulers.io())

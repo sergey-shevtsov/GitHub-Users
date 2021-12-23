@@ -4,19 +4,19 @@ import android.content.Intent
 import android.net.Uri
 import androidx.recyclerview.widget.RecyclerView
 import com.sshevtsov.githubusers.R
-import com.sshevtsov.githubusers.data.entities.GitHubRepoEntity
+import com.sshevtsov.githubusers.data.entities.GitHubRepositoryEntity
 import com.sshevtsov.githubusers.databinding.RepositoryListItemBinding
 
 class RepositoryViewHolder(private val binding: RepositoryListItemBinding) :
     RecyclerView.ViewHolder(binding.root) {
 
-    fun bind(repositoryEntity: GitHubRepoEntity) {
+    fun bind(repositoryEntity: GitHubRepositoryEntity) {
 
         binding.apply {
 
             repositoryNameTextView.text = repositoryEntity.name
 
-            if (repositoryEntity.language?.isNotEmpty() == true && repositoryEntity.language != "null") {
+            if (repositoryEntity.language.isNotBlank() && repositoryEntity.language != "null") {
                 languageTextView.text = String.format(
                     binding.root.context.getString(R.string.repository_stats_pattern),
                     binding.root.context.getString(R.string.language_stats_title),

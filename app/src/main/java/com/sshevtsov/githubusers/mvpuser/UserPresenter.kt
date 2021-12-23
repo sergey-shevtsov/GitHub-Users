@@ -1,10 +1,9 @@
 package com.sshevtsov.githubusers.mvpuser
 
 import com.sshevtsov.githubusers.ViewState
-import com.sshevtsov.githubusers.data.remote.GitHubUserRepository
+import com.sshevtsov.githubusers.data.repository.GitHubUserRepository
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import moxy.MvpPresenter
-import java.util.concurrent.TimeUnit
 
 class UserPresenter(
     private val userRepository: GitHubUserRepository,

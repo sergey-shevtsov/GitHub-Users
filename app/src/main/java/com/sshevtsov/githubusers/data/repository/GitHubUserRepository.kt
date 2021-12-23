@@ -1,6 +1,6 @@
-package com.sshevtsov.githubusers.data.remote
+package com.sshevtsov.githubusers.data.repository
 
-import com.sshevtsov.githubusers.data.entities.GitHubRepoEntity
+import com.sshevtsov.githubusers.data.entities.GitHubRepositoryEntity
 import com.sshevtsov.githubusers.data.entities.GitHubUserEntity
 import io.reactivex.rxjava3.core.Single
 
@@ -10,6 +10,6 @@ interface GitHubUserRepository {
 
     fun getUserByLogin(login: String): Single<GitHubUserEntity>
 
-    fun getUserRepositories(login: String): Single<List<GitHubRepoEntity>>
+    fun getUserRepositories(login: String): Single<List<GitHubRepositoryEntity>>
 
 }

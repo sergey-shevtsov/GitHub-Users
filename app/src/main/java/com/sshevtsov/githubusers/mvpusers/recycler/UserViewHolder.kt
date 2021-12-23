@@ -52,19 +52,15 @@ class UserViewHolder(
             .into(binding.avatarImageView)
 
         binding.openInBrowserImageButton.setOnClickListener {
-            user.htmlUrl?.let { htmlUrl ->
                 binding.root.context.startActivity(
                     Intent(Intent.ACTION_VIEW).apply {
-                        data = Uri.parse(htmlUrl)
+                        data = Uri.parse(user.htmlUrl)
                     }
                 )
-            }
         }
 
         binding.root.setOnClickListener {
-            user.login?.let { login ->
-                onUserClickListener.onUserClicked(login)
-            }
+            onUserClickListener.onUserClicked(user.login)
         }
     }
 }
