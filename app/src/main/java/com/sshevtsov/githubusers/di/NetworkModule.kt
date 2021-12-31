@@ -3,6 +3,7 @@ package com.sshevtsov.githubusers.di
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.sshevtsov.githubusers.data.retrofit.GitHubApi
+import com.sshevtsov.githubusers.mvpuser.di.UserComponent
 import dagger.Module
 import dagger.Provides
 import dagger.Reusable
@@ -12,7 +13,7 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
-@Module
+@Module(subcomponents = [UserComponent::class])
 class NetworkModule {
 
     @Provides
