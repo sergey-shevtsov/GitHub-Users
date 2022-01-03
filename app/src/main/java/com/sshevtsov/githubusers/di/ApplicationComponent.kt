@@ -12,6 +12,7 @@ import javax.inject.Singleton
 @Component(
     modules = [
         CiceroneModule::class,
+        MappersModule::class,
         NetworkModule::class,
         RepositoryModule::class,
         RoomModule::class

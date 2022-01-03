@@ -6,7 +6,10 @@ import javax.inject.Scope
 
 @UserScope
 @Subcomponent(
-    modules = [UserRepositoryModule::class]
+    modules = [
+        UserMappersModule::class,
+        UserRepositoryModule::class
+    ]
 )
 interface UserComponent {
 
