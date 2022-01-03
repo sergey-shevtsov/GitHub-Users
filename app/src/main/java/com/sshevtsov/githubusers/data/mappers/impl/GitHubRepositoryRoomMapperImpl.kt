@@ -1,6 +1,7 @@
-package com.sshevtsov.githubusers.data.mappers
+package com.sshevtsov.githubusers.data.mappers.impl
 
 import com.sshevtsov.githubusers.data.entities.GitHubRepositoryEntity
+import com.sshevtsov.githubusers.data.mappers.interfaces.GitHubRepositoryRoomMapper
 import com.sshevtsov.githubusers.data.room.RoomGitHubRepository
 
 class GitHubRepositoryRoomMapperImpl : GitHubRepositoryRoomMapper {

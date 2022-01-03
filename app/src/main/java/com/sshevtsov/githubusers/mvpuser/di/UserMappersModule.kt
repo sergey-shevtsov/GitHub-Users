@@ -1,9 +1,9 @@
 package com.sshevtsov.githubusers.mvpuser.di
 
-import com.sshevtsov.githubusers.data.mappers.GitHubRepositoryRetrofitMapper
-import com.sshevtsov.githubusers.data.mappers.GitHubRepositoryRetrofitMapperImpl
-import com.sshevtsov.githubusers.data.mappers.GitHubRepositoryRoomMapper
-import com.sshevtsov.githubusers.data.mappers.GitHubRepositoryRoomMapperImpl
+import com.sshevtsov.githubusers.data.mappers.interfaces.GitHubRepositoryRetrofitMapper
+import com.sshevtsov.githubusers.data.mappers.impl.GitHubRepositoryRetrofitMapperImpl
+import com.sshevtsov.githubusers.data.mappers.interfaces.GitHubRepositoryRoomMapper
+import com.sshevtsov.githubusers.data.mappers.impl.GitHubRepositoryRoomMapperImpl
 import dagger.Module
 import dagger.Provides
 

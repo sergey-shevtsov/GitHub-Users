@@ -1,4 +1,4 @@
-package com.sshevtsov.githubusers.data.mappers
+package com.sshevtsov.githubusers.data.mappers.interfaces
 
 import com.sshevtsov.githubusers.data.entities.GitHubUserEntity
 import com.sshevtsov.githubusers.data.room.RoomGitHubUser

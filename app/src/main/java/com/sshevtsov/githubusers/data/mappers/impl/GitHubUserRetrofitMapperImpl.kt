@@ -1,6 +1,7 @@
-package com.sshevtsov.githubusers.data.mappers
+package com.sshevtsov.githubusers.data.mappers.impl
 
 import com.sshevtsov.githubusers.data.entities.GitHubUserEntity
+import com.sshevtsov.githubusers.data.mappers.interfaces.GitHubUserRetrofitMapper
 import com.sshevtsov.githubusers.data.retrofit.RetrofitGitHubUser
 
 class GitHubUserRetrofitMapperImpl : GitHubUserRetrofitMapper {

@@ -1,8 +1,8 @@
 package com.sshevtsov.githubusers.data.repository
 
 import com.sshevtsov.githubusers.data.entities.GitHubRepositoryEntity
-import com.sshevtsov.githubusers.data.mappers.GitHubRepositoryRetrofitMapper
-import com.sshevtsov.githubusers.data.mappers.GitHubRepositoryRoomMapper
+import com.sshevtsov.githubusers.data.mappers.interfaces.GitHubRepositoryRetrofitMapper
+import com.sshevtsov.githubusers.data.mappers.interfaces.GitHubRepositoryRoomMapper
 import com.sshevtsov.githubusers.data.retrofit.GitHubApi
 import com.sshevtsov.githubusers.data.room.GitHubRepositoryDao
 import com.sshevtsov.githubusers.data.room.GitHubUserDao

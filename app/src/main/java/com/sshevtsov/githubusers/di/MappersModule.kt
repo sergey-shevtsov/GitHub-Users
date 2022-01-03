@@ -1,9 +1,9 @@
 package com.sshevtsov.githubusers.di
 
-import com.sshevtsov.githubusers.data.mappers.GitHubUserRetrofitMapper
-import com.sshevtsov.githubusers.data.mappers.GitHubUserRetrofitMapperImpl
-import com.sshevtsov.githubusers.data.mappers.GitHubUserRoomMapper
-import com.sshevtsov.githubusers.data.mappers.GitHubUserRoomMapperImpl
+import com.sshevtsov.githubusers.data.mappers.interfaces.GitHubUserRetrofitMapper
+import com.sshevtsov.githubusers.data.mappers.impl.GitHubUserRetrofitMapperImpl
+import com.sshevtsov.githubusers.data.mappers.interfaces.GitHubUserRoomMapper
+import com.sshevtsov.githubusers.data.mappers.impl.GitHubUserRoomMapperImpl
 import dagger.Module
 import dagger.Provides
 

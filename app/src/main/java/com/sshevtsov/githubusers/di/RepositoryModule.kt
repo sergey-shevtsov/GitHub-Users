@@ -1,7 +1,7 @@
 package com.sshevtsov.githubusers.di
 
-import com.sshevtsov.githubusers.data.mappers.GitHubUserRetrofitMapper
-import com.sshevtsov.githubusers.data.mappers.GitHubUserRoomMapper
+import com.sshevtsov.githubusers.data.mappers.interfaces.GitHubUserRetrofitMapper
+import com.sshevtsov.githubusers.data.mappers.interfaces.GitHubUserRoomMapper
 import com.sshevtsov.githubusers.data.repository.GitHubUserRepository
 import com.sshevtsov.githubusers.data.repository.GitHubUserRepositoryImpl
 import com.sshevtsov.githubusers.data.retrofit.GitHubApi
