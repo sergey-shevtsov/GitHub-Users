@@ -9,6 +9,7 @@ import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
+import com.sshevtsov.githubusers.BackButtonListener
 import com.sshevtsov.githubusers.R
 import com.sshevtsov.githubusers.ViewState
 import com.sshevtsov.githubusers.app
@@ -19,7 +20,7 @@ import com.sshevtsov.githubusers.mvpuser.recycler.RepositoriesAdapter
 import moxy.MvpAppCompatFragment
 import moxy.ktx.moxyPresenter
 
-class UserFragment : MvpAppCompatFragment(R.layout.fragment_user), UserView {
+class UserFragment : MvpAppCompatFragment(R.layout.fragment_user), UserView, BackButtonListener {
 
     private var _binding: FragmentUserBinding? = null
     private val binding get() = _binding!!
@@ -117,4 +118,7 @@ class UserFragment : MvpAppCompatFragment(R.layout.fragment_user), UserView {
                 }
             }
     }
+
+    override fun backPressed(): Boolean = presenter.backPressed()
+
 }

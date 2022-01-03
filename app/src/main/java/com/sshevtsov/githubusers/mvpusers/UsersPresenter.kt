@@ -39,4 +39,9 @@ class UsersPresenter : MvpPresenter<UsersView>() {
     fun onUserClicked(userLogin: String) {
         router.navigateTo(UserScreen(userLogin))
     }
+
+    fun backPressed(): Boolean {
+        router.exit()
+        return true
+    }
 }

@@ -1,7 +1,8 @@
 package com.sshevtsov.githubusers.di
 
 import android.content.Context
-import com.sshevtsov.githubusers.MainActivity
+import com.sshevtsov.githubusers.mvpmain.MainActivity
+import com.sshevtsov.githubusers.mvpmain.MainPresenter
 import com.sshevtsov.githubusers.mvpuser.di.UserComponent
 import com.sshevtsov.githubusers.mvpusers.UsersPresenter
 import dagger.BindsInstance
@@ -32,6 +33,7 @@ interface ApplicationComponent {
     }
 
     fun inject(activity: MainActivity)
+    fun inject(mainPresenter: MainPresenter)
     fun inject(usersPresenter: UsersPresenter)
 
 }

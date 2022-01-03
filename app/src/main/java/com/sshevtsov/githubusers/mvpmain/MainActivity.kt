@@ -1,33 +1,38 @@
-package com.sshevtsov.githubusers
+package com.sshevtsov.githubusers.mvpmain
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import com.github.terrakok.cicerone.NavigatorHolder
 import com.github.terrakok.cicerone.Router
 import com.github.terrakok.cicerone.androidx.AppNavigator
+import com.sshevtsov.githubusers.BackButtonListener
+import com.sshevtsov.githubusers.R
+import com.sshevtsov.githubusers.app
 import com.sshevtsov.githubusers.databinding.ActivityMainBinding
 import com.sshevtsov.githubusers.mvpusers.UsersScreen
+import moxy.MvpAppCompatActivity
+import moxy.ktx.moxyPresenter
 import javax.inject.Inject
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : MvpAppCompatActivity(), MainView {
+
+    @Inject
+    lateinit var navigatorHolder: NavigatorHolder
 
     private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
 
     private val navigator = AppNavigator(this, R.id.fragment_container)
 
-    @Inject
-    lateinit var navigatorHolder: NavigatorHolder
-
-    @Inject
-    lateinit var router: Router
+    private val presenter by moxyPresenter {
+        MainPresenter().apply {
+            app.component.inject(this)
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(R.style.AppTheme)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         app.component.inject(this)
-
-        if (savedInstanceState == null) router.replaceScreen(UsersScreen)
     }
 
     override fun onResumeFragments() {
@@ -38,5 +43,14 @@ class MainActivity : AppCompatActivity() {
     override fun onPause() {
         navigatorHolder.removeNavigator()
         super.onPause()
+    }
+
+    override fun onBackPressed() {
+        supportFragmentManager.fragments.forEach {
+            if (it is BackButtonListener && it.backPressed()) {
+                return
+            }
+        }
+        presenter.backClicked()
     }
 }

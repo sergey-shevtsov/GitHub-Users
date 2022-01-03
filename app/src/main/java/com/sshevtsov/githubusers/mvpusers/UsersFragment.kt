@@ -3,6 +3,7 @@ package com.sshevtsov.githubusers.mvpusers
 import android.os.Bundle
 import android.view.View
 import androidx.core.view.isVisible
+import com.sshevtsov.githubusers.BackButtonListener
 import com.sshevtsov.githubusers.R
 import com.sshevtsov.githubusers.ViewState
 import com.sshevtsov.githubusers.app
@@ -13,7 +14,8 @@ import moxy.MvpAppCompatFragment
 import moxy.ktx.moxyPresenter
 
 class UsersFragment :
-    MvpAppCompatFragment(R.layout.fragment_users), UsersView, UsersAdapter.OnUserClickListener {
+    MvpAppCompatFragment(R.layout.fragment_users), UsersView, UsersAdapter.OnUserClickListener,
+    BackButtonListener {
 
     private var _binding: FragmentUsersBinding? = null
     private val binding get() = _binding!!
@@ -61,5 +63,7 @@ class UsersFragment :
     override fun onUserClicked(userLogin: String) {
         presenter.onUserClicked(userLogin)
     }
+
+    override fun backPressed(): Boolean = presenter.backPressed()
 
 }
