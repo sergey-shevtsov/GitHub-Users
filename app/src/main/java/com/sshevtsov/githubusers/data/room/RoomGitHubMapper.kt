@@ -5,24 +5,6 @@ import com.sshevtsov.githubusers.data.entities.GitHubUserEntity
 
 object RoomGitHubMapper {
 
-    fun mapRoomUserToUserEntity(roomUser: RoomGitHubUser): GitHubUserEntity {
-        with(roomUser) {
-            return GitHubUserEntity(id, login, avatarUrl, htmlUrl, reposUrl)
-        }
-    }
-
-    fun mapRoomUserToUserEntity(roomUsers: List<RoomGitHubUser>): List<GitHubUserEntity> =
-        roomUsers.map { mapRoomUserToUserEntity(it) }
-
-    fun mapUserEntityToRoomUser(userEntity: GitHubUserEntity): RoomGitHubUser {
-        with(userEntity) {
-            return RoomGitHubUser(id, login, avatarUrl, htmlUrl, reposUrl)
-        }
-    }
-
-    fun mapUserEntityToRoomUser(userEntities: List<GitHubUserEntity>): List<RoomGitHubUser> =
-        userEntities.map { mapUserEntityToRoomUser(it) }
-
     fun mapRoomRepositoryToRepositoryEntity(roomRepository: RoomGitHubRepository): GitHubRepositoryEntity {
         with(roomRepository) {
             return GitHubRepositoryEntity(id, name, htmlUrl, language, forksCount, stargazersCount)

@@ -2,9 +2,9 @@ package com.sshevtsov.githubusers.data.repository
 
 import com.sshevtsov.githubusers.data.entities.GitHubUserEntity
 import com.sshevtsov.githubusers.data.mappers.GitHubUserRetrofitMapper
+import com.sshevtsov.githubusers.data.mappers.GitHubUserRoomMapper
 import com.sshevtsov.githubusers.data.retrofit.GitHubApi
 import com.sshevtsov.githubusers.data.room.GitHubUserDao
-import com.sshevtsov.githubusers.data.room.RoomGitHubMapper
 import io.reactivex.rxjava3.core.Single
 import io.reactivex.rxjava3.schedulers.Schedulers
 import javax.inject.Inject
@@ -13,7 +13,8 @@ class GitHubUserRepositoryImpl
 @Inject constructor(
     private val gitHubApi: GitHubApi,
     private val roomUserDao: GitHubUserDao,
-    private val retrofitUserMapper: GitHubUserRetrofitMapper
+    private val retrofitUserMapper: GitHubUserRetrofitMapper,
+    private val roomUserMapper: GitHubUserRoomMapper
 ) : GitHubUserRepository {
 
     override fun getUsers(): Single<List<GitHubUserEntity>> {
@@ -23,11 +24,11 @@ class GitHubUserRepositoryImpl
                     gitHubApi.getUsers()
                         .map { resultFromServer ->
                             val users = retrofitUserMapper.map(resultFromServer)
-                            roomUserDao.insert(RoomGitHubMapper.mapUserEntityToRoomUser(users))
+                            roomUserDao.insert(roomUserMapper.mapToRoomUser(users))
                             users
                         }
                 } else {
-                    Single.just(RoomGitHubMapper.mapRoomUserToUserEntity(it))
+                    Single.just(roomUserMapper.mapToUser(it))
                 }
             }
             .subscribeOn(Schedulers.io())
@@ -35,7 +36,7 @@ class GitHubUserRepositoryImpl
 
     override fun getUserByLogin(login: String): Single<GitHubUserEntity> {
         return roomUserDao.findByLogin(login)
-            .flatMap { Single.just(RoomGitHubMapper.mapRoomUserToUserEntity(it)) }
+            .flatMap { Single.just(roomUserMapper.mapToUser(it)) }
             .subscribeOn(Schedulers.io())
     }
 }
