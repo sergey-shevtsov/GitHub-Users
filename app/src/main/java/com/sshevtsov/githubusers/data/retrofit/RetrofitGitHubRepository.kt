@@ -2,7 +2,7 @@ package com.sshevtsov.githubusers.data.retrofit
 
 import com.google.gson.annotations.SerializedName
 
-data class GitHubRepositoryDto(
+data class RetrofitGitHubRepository(
     @SerializedName("id")
     val id: String? = null,
     @SerializedName("name")
