@@ -1,5 +1,6 @@
 package com.sshevtsov.githubusers.mvpuser.di
 
+import com.sshevtsov.githubusers.data.mappers.GitHubRepositoryRetrofitMapper
 import com.sshevtsov.githubusers.data.repository.GitHubRepoRepository
 import com.sshevtsov.githubusers.data.repository.GitHubRepoRepositoryImpl
 import com.sshevtsov.githubusers.data.retrofit.GitHubApi
@@ -16,8 +17,9 @@ class UserRepositoryModule {
     fun repoRepository(
         api: GitHubApi,
         roomUserDao: GitHubUserDao,
-        roomRepositoryDao: GitHubRepositoryDao
+        roomRepositoryDao: GitHubRepositoryDao,
+        retrofitRepositoryMapper: GitHubRepositoryRetrofitMapper
     ): GitHubRepoRepository =
-        GitHubRepoRepositoryImpl(api, roomUserDao, roomRepositoryDao)
+        GitHubRepoRepositoryImpl(api, roomUserDao, roomRepositoryDao, retrofitRepositoryMapper)
 
 }

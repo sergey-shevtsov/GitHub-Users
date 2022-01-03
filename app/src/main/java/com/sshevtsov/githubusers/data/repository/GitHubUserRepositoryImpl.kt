@@ -1,8 +1,8 @@
 package com.sshevtsov.githubusers.data.repository
 
 import com.sshevtsov.githubusers.data.entities.GitHubUserEntity
+import com.sshevtsov.githubusers.data.mappers.GitHubUserRetrofitMapper
 import com.sshevtsov.githubusers.data.retrofit.GitHubApi
-import com.sshevtsov.githubusers.data.retrofit.GitHubDtoMapper
 import com.sshevtsov.githubusers.data.room.GitHubUserDao
 import com.sshevtsov.githubusers.data.room.RoomGitHubMapper
 import io.reactivex.rxjava3.core.Single
@@ -12,7 +12,8 @@ import javax.inject.Inject
 class GitHubUserRepositoryImpl
 @Inject constructor(
     private val gitHubApi: GitHubApi,
-    private val roomUserDao: GitHubUserDao
+    private val roomUserDao: GitHubUserDao,
+    private val retrofitUserMapper: GitHubUserRetrofitMapper
 ) : GitHubUserRepository {
 
     override fun getUsers(): Single<List<GitHubUserEntity>> {
@@ -21,7 +22,7 @@ class GitHubUserRepositoryImpl
                 if (it.isEmpty()) {
                     gitHubApi.getUsers()
                         .map { resultFromServer ->
-                            val users = GitHubDtoMapper.mapUserDtoToEntity(resultFromServer)
+                            val users = retrofitUserMapper.map(resultFromServer)
                             roomUserDao.insert(RoomGitHubMapper.mapUserEntityToRoomUser(users))
                             users
                         }
