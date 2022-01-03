@@ -2,10 +2,10 @@ package com.sshevtsov.githubusers.data.repository
 
 import com.sshevtsov.githubusers.data.entities.GitHubRepositoryEntity
 import com.sshevtsov.githubusers.data.mappers.GitHubRepositoryRetrofitMapper
+import com.sshevtsov.githubusers.data.mappers.GitHubRepositoryRoomMapper
 import com.sshevtsov.githubusers.data.retrofit.GitHubApi
 import com.sshevtsov.githubusers.data.room.GitHubRepositoryDao
 import com.sshevtsov.githubusers.data.room.GitHubUserDao
-import com.sshevtsov.githubusers.data.room.RoomGitHubMapper
 import io.reactivex.rxjava3.core.Single
 import io.reactivex.rxjava3.schedulers.Schedulers
 import javax.inject.Inject
@@ -15,7 +15,8 @@ class GitHubRepoRepositoryImpl
     private val gitHubApi: GitHubApi,
     private val roomUserDao: GitHubUserDao,
     private val roomRepositoryDao: GitHubRepositoryDao,
-    private val retrofitRepositoryMapper: GitHubRepositoryRetrofitMapper
+    private val retrofitRepositoryMapper: GitHubRepositoryRetrofitMapper,
+    private val roomRepositoryMapper: GitHubRepositoryRoomMapper
 ) : GitHubRepoRepository {
 
     override fun getUserRepositories(login: String): Single<List<GitHubRepositoryEntity>> {
@@ -29,7 +30,7 @@ class GitHubRepoRepositoryImpl
                                     val repositories =
                                         retrofitRepositoryMapper.map(resultFromServer)
                                     roomRepositoryDao.insert(
-                                        RoomGitHubMapper.mapRepositoryEntityToRoomRepository(
+                                        roomRepositoryMapper.mapToRoomRepository(
                                             repositories,
                                             user.id
                                         )
@@ -37,7 +38,7 @@ class GitHubRepoRepositoryImpl
                                     repositories
                                 }
                         } else {
-                            Single.just(RoomGitHubMapper.mapRoomRepositoryToRepositoryEntity(it))
+                            Single.just(roomRepositoryMapper.mapToRepository(it))
                         }
                     }
             }
