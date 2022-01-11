@@ -21,4 +21,16 @@
     <style name="AvatarImageView">
         <item name="cornerSize">10dp</item>
     </style>
+
+    <style name="Text">
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="Text.Error">
+        <item name="android:textColor">?android:colorError</item>
+    </style>
+
+    <style name="Text.Clickable">
+        <item name="android:textColor">@color/blue</item>
+    </style>
 </resources>

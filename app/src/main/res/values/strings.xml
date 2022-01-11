@@ -7,4 +7,6 @@
     <string name="repository_stats_pattern">%s: %s</string>
     <string name="error_message">Something went wrong…</string>
     <string name="try_again">Try again</string>
+    <string name="try_again_underline"><u>Try again</u></string>
+    <string name="error_repo_list_text">Error loading the repository list</string>
 </resources>

@@ -7,6 +7,7 @@ import com.sshevtsov.githubusers.data.repository.GitHubUserRepository
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import moxy.MvpPresenter
 import javax.inject.Inject
+import kotlin.random.Random
 
 class UserPresenter(private val userLogin: String) : MvpPresenter<UserView>() {
 
@@ -20,11 +21,19 @@ class UserPresenter(private val userLogin: String) : MvpPresenter<UserView>() {
     lateinit var router: Router
 
     override fun onFirstViewAttach() {
-        updateUserContent(userLogin)
-        updateRepositoriesContent(userLogin)
+        load()
     }
 
-    private fun updateUserContent(userLogin: String) {
+    fun load() {
+        updateUserContent()
+        loadRepositories()
+    }
+
+    fun loadRepositories() {
+        updateRepositoriesContent()
+    }
+
+    private fun updateUserContent() {
         viewState.setMainState(ViewState.LOADING)
 
         userRepository.getUserByLogin(userLogin)
@@ -33,11 +42,11 @@ class UserPresenter(private val userLogin: String) : MvpPresenter<UserView>() {
             .subscribe({
                 viewState.showUserContent(it)
             }, {
-                //todo
+                viewState.setMainState(ViewState.ERROR)
             })
     }
 
-    private fun updateRepositoriesContent(userLogin: String) {
+    private fun updateRepositoriesContent() {
         viewState.setRepoListState(ViewState.LOADING)
 
         repoRepository.getUserRepositories(userLogin)
@@ -46,7 +55,7 @@ class UserPresenter(private val userLogin: String) : MvpPresenter<UserView>() {
             .subscribe({
                 viewState.showRepositories(it)
             }, {
-                //todo
+                viewState.setRepoListState(ViewState.ERROR)
             })
     }
 

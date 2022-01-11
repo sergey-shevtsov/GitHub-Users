@@ -3,6 +3,7 @@ package com.sshevtsov.githubusers.mvpuser
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.core.view.isVisible
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
@@ -46,19 +47,35 @@ class UserFragment : MvpAppCompatFragment(R.layout.fragment_user), UserView, Bac
         _binding = FragmentUserBinding.bind(view)
 
         binding.repositoriesRecycler.adapter = repositoriesAdapter
+
+        binding.mainErrorButtonTryAgain.setOnClickListener {
+            presenter.load()
+        }
+
+        binding.errorRepoListTryAgainButton.setOnClickListener {
+            presenter.loadRepositories()
+        }
     }
 
     override fun setMainState(viewState: ViewState) {
+        binding.mainProgressIndicatorFrameLayout.isVisible = false
+        binding.mainErrorFrameLayout.isVisible = false
+
         when (viewState) {
             ViewState.LOADING -> binding.mainProgressIndicatorFrameLayout.isVisible = true
-            ViewState.IDLE -> binding.mainProgressIndicatorFrameLayout.isVisible = false
+            ViewState.ERROR -> binding.mainErrorFrameLayout.isVisible = true
+            ViewState.IDLE -> { /* do nothing */ }
         }
     }
 
     override fun setRepoListState(viewState: ViewState) {
+        binding.repositoriesProgressIndicator.isVisible = false
+        binding.errorRepoListFrameLayout.isVisible = false
+        binding.repositoriesRecycler.isVisible = false
         when (viewState) {
             ViewState.LOADING -> binding.repositoriesProgressIndicator.isVisible = true
-            ViewState.IDLE -> binding.repositoriesProgressIndicator.isVisible = false
+            ViewState.ERROR -> binding.errorRepoListFrameLayout.isVisible = true
+            ViewState.IDLE -> binding.repositoriesRecycler.isVisible = true
         }
     }
 

@@ -9,4 +9,5 @@
     <color name="gray">#333333</color>
     <color name="gray_50per">#80333333</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="blue">#0A47C5</color>
 </resources>
