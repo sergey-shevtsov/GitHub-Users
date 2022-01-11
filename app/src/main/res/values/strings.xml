@@ -9,4 +9,6 @@
     <string name="try_again">Try again</string>
     <string name="try_again_underline"><u>Try again</u></string>
     <string name="error_repo_list_text">Error loading the repository list</string>
+    <string name="internet_connection_lost">Internet connection lost</string>
+    <string name="internet_connection_restored">Internet connection restored</string>
 </resources>
