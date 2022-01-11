@@ -36,14 +36,21 @@ class UsersFragment :
 
         binding.swipeRefreshLayout.setOnRefreshListener {
             binding.swipeRefreshLayout.isRefreshing = false
-            presenter.onRefresh()
+            presenter.load()
+        }
+
+        binding.buttonTryAgain.setOnClickListener {
+            presenter.load()
         }
     }
 
     override fun setState(viewState: ViewState) {
+        binding.progressIndicatorFrameLayout.isVisible = false
+        binding.errorFrameLayout.isVisible = false
         when (viewState) {
+            ViewState.ERROR -> binding.errorFrameLayout.isVisible = true
             ViewState.LOADING -> binding.progressIndicatorFrameLayout.isVisible = true
-            ViewState.IDLE -> binding.progressIndicatorFrameLayout.isVisible = false
+            ViewState.IDLE -> { /* do nothing */ }
         }
     }
 

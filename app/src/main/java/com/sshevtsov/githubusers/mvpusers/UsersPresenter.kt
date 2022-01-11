@@ -7,6 +7,7 @@ import com.sshevtsov.githubusers.mvpuser.UserScreen
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import moxy.MvpPresenter
 import javax.inject.Inject
+import kotlin.random.Random
 
 class UsersPresenter : MvpPresenter<UsersView>() {
 
@@ -17,10 +18,10 @@ class UsersPresenter : MvpPresenter<UsersView>() {
     lateinit var userRepository: GitHubUserRepository
 
     override fun onFirstViewAttach() {
-        onRefresh()
+        load()
     }
 
-    fun onRefresh() {
+    fun load() {
         viewState.setState(ViewState.LOADING)
         updateContent()
     }
@@ -32,7 +33,7 @@ class UsersPresenter : MvpPresenter<UsersView>() {
             .subscribe({
                 viewState.showUsers(it)
             }, {
-                //todo
+                viewState.setState(ViewState.ERROR)
             })
     }
 
