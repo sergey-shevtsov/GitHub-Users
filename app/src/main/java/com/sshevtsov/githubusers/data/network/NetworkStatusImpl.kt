@@ -3,6 +3,15 @@ package com.sshevtsov.githubusers.data.network
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.Network
+import android.os.Build
+import androidx.annotation.RequiresApi
+import io.reactivex.rxjava3.core.Observable
+import io.reactivex.rxjava3.subjects.BehaviorSubject
+import javax.inject.Inject
+
+import android.content.Context
+import android.net.ConnectivityManager
+import android.net.Network
 import android.net.NetworkRequest
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.core.Single
