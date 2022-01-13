@@ -14,7 +14,7 @@ import javax.inject.Singleton
     modules = [
         CiceroneModule::class,
         MappersModule::class,
-        NetworkModule::class,
+        RetrofitModule::class,
         RepositoryModule::class,
         RoomModule::class
     ]

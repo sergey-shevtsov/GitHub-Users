@@ -14,7 +14,7 @@ import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
 @Module(subcomponents = [UserComponent::class])
-class NetworkModule {
+class RetrofitModule {
 
     @Provides
     fun gson(): Gson = GsonBuilder().create()
