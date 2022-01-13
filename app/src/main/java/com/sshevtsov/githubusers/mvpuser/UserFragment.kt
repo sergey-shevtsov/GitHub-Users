@@ -32,13 +32,9 @@ class UserFragment : MvpAppCompatFragment(R.layout.fragment_user), UserView, Bac
         arguments?.getString(ARG_LOGIN).orEmpty()
     }
 
-    private val userComponent by lazy {
-        app.initUserComponent()
-    }
-
     private val presenter by moxyPresenter {
         UserPresenter(userLogin).apply {
-            userComponent.inject(this)
+            app.component.userComponent().build().inject(this)
         }
     }
 
@@ -118,11 +114,6 @@ class UserFragment : MvpAppCompatFragment(R.layout.fragment_user), UserView, Bac
     override fun onDestroyView() {
         _binding = null
         super.onDestroyView()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        app.destroyUserComponent()
     }
 
     companion object {
