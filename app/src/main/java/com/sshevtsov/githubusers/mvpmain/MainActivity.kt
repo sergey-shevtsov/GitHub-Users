@@ -1,14 +1,13 @@
 package com.sshevtsov.githubusers.mvpmain
 
 import android.os.Bundle
+import androidx.core.view.isVisible
 import com.github.terrakok.cicerone.NavigatorHolder
-import com.github.terrakok.cicerone.Router
 import com.github.terrakok.cicerone.androidx.AppNavigator
 import com.sshevtsov.githubusers.BackButtonListener
 import com.sshevtsov.githubusers.R
 import com.sshevtsov.githubusers.app
 import com.sshevtsov.githubusers.databinding.ActivityMainBinding
-import com.sshevtsov.githubusers.mvpusers.UsersScreen
 import moxy.MvpAppCompatActivity
 import moxy.ktx.moxyPresenter
 import javax.inject.Inject
@@ -52,5 +51,21 @@ class MainActivity : MvpAppCompatActivity(), MainView {
             }
         }
         presenter.backClicked()
+    }
+
+    override fun showInternetLostMessage() {
+        binding.internetLostTextView.isVisible = true
+    }
+
+    override fun hideInternetLostMessage() {
+        binding.internetLostTextView.isVisible = false
+    }
+
+    override fun showInternetRestoredMessage() {
+        binding.internetRestoredTextView.isVisible = true
+    }
+
+    override fun hideInternetRestoredMessage() {
+        binding.internetRestoredTextView.isVisible = false
     }
 }
