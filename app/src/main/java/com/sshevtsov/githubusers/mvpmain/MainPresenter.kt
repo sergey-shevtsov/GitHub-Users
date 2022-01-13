@@ -18,6 +18,8 @@ class MainPresenter : MvpPresenter<MainView>() {
     @Inject
     lateinit var networkStatus: NetworkStatus
 
+    private var networkStatusReceived = false
+
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
         registerNetworkCallback()
@@ -29,7 +31,7 @@ class MainPresenter : MvpPresenter<MainView>() {
             .subscribeOn(Schedulers.computation())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe { isOnline ->
-                if (isOnline) {
+                if (isOnline && networkStatusReceived) {
                     viewState.hideInternetLostMessage()
                     viewState.showInternetRestoredMessage()
 
@@ -38,10 +40,12 @@ class MainPresenter : MvpPresenter<MainView>() {
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe { viewState.hideInternetRestoredMessage() }
 
-                } else {
+                } else if (!isOnline) {
                     viewState.hideInternetRestoredMessage()
                     viewState.showInternetLostMessage()
                 }
+
+                networkStatusReceived = true
             }
     }
 
